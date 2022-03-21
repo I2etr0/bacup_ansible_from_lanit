@@ -1,0 +1,15 @@
+[Unit]
+Description=Atlassian Confluence
+After=network.target
+
+[Service]
+Type=forking
+User=confluence
+LimitNOFILE=32768
+# Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.13.0.8-1.el7_9.x86_64/bin/java"
+PIDFile=/opt/confluence/confluence/work/catalina.pid
+ExecStart=/opt/confluence/confluence/bin/start-confluence.sh
+ExecStop=/opt/confluence/confluence/bin/stop-confluence.sh
+
+[Install]
+WantedBy=multi-user.target
